@@ -1,0 +1,332 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lyndon Jay V. Aron — Portfolio</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{box-sizing:border-box}html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color:#fff;
+      overflow-x:hidden;
+    }
+
+    #particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+
+    .wrap { position: relative; z-index: 2; width:min(1100px,94%); margin-top:80px; display:flex;flex-direction:column;align-items:center; }
+
+    header.topbar { position: fixed; top: 12px; left: 50%; transform: translateX(-50%); z-index: 5; width: min(1100px,94%); display:flex; justify-content:center; pointer-events:auto; }
+    nav { background: rgba(255,255,255,0.06); padding:10px 18px;border-radius:999px; display:flex; gap:20px; align-items:center; backdrop-filter: blur(6px); box-shadow:0 8px 30px rgba(0,0,0,0.35); transition: transform .25s ease, background .3s ease; }
+    nav a { font-weight:600; letter-spacing:0.4px; padding:6px 10px; border-radius:8px; transition:color .25s, transform .25s; }
+    nav a:hover { color:#00f0ff; transform:translateY(-3px) scale(1.03); text-shadow:0 0 8px rgba(0,240,255,0.4); }
+
+    .hero { width:100%; margin-top:10px; background:rgba(255,255,255,0.04); border-radius:18px; padding:34px; text-align:center; box-shadow:0 10px 40px rgba(0,0,0,0.45); display:flex; flex-direction:column; align-items:center; gap:14px; }
+    .avatar { width:150px; height:150px; border-radius:50%; object-fit:cover; border:4px solid rgba(255,255,255,0.12); box-shadow: 0 8px 30px rgba(0,0,0,0.6); }
+    .avatar-wrap { position:relative; display:inline-block; padding:8px; border-radius:50%; background: radial-gradient(circle at 30% 20%, rgba(0,240,255,0.12), transparent 20%); }
+    .name { font-size:1.8rem; font-weight:700; letter-spacing:1px; margin:6px 0; color:#fff; }
+    .tagline { color:rgba(255,255,255,0.85); max-width:780px; }
+
+    .cta-row { display:flex; gap:12px; margin-top:8px; flex-wrap:wrap; justify-content:center; }
+    .btn { padding:10px 16px; border-radius:12px; background:linear-gradient(90deg,#00e6e6,#00aaff); color:#052; font-weight:700; border:none; cursor:pointer; box-shadow:0 8px 20px rgba(0,170,255,0.12); transition:transform .18s, box-shadow .18s; }
+    .btn:hover{ transform:translateY(-4px) scale(1.02); box-shadow:0 14px 28px rgba(0,170,255,0.18) }
+
+    section.card { width:100%; margin:28px 0; background: rgba(255,255,255,0.03); border-radius:14px; padding:26px; text-align:center; box-shadow:0 8px 30px rgba(0,0,0,0.35); opacity:0; transform: translateY(25px); transition:opacity .9s ease, transform .9s ease; }
+    section.card.visible { opacity:1; transform: translateY(0); }
+
+    h2.sec-title { color:#00f0ff; margin-bottom:12px; letter-spacing:1px }
+
+    .skills-grid { display:flex; flex-wrap:wrap; justify-content:center; gap:18px; }
+    .skill { width:220px; background: rgba(255,255,255,0.03); border-radius:12px; padding:12px; text-align:left; }
+    .skill .label { font-weight:600; margin-bottom:6px; font-size:0.95rem }
+    .skill .bar { background: rgba(255,255,255,0.08); height:10px; border-radius:999px; overflow:hidden }
+    .skill .fill { height:100%; width:0%; background: linear-gradient(90deg,#00e6e6,#00aaff); border-radius:999px; transition: width 1.2s cubic-bezier(.2,.9,.2,1) }
+
+    .projects-grid { display:flex; gap:16px; flex-wrap:wrap; justify-content:center; }
+    .project { width:300px; background: rgba(255,255,255,0.04); border-radius:12px; padding:14px; transition: transform .2s ease, box-shadow .25s ease; box-shadow:0 8px 30px rgba(0,0,0,0.35); cursor:grab; }
+    .project img { width:100%; height:160px; object-fit:cover; border-radius:8px; margin-bottom:10px }
+    .project:hover { box-shadow:0 18px 40px rgba(0,170,255,0.12); transform: translateY(-8px) }
+
+    .fav-grid { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+    .fav { width:140px; text-align:center; }
+
+    .contact-row { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:12px }
+    .input { background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.04); padding:10px 12px; border-radius:10px; color:inherit; min-width:220px }
+
+    #backToTop { position:fixed; right:18px; bottom:18px; z-index:6; background:#00d1ff; color:#052; border:none; padding:12px 14px; border-radius:12px; box-shadow:0 12px 24px rgba(0,0,0,0.35); cursor:pointer; display:none; font-weight:700 }
+    footer { margin:30px 0 70px 0; color:rgba(255,255,255,0.78) }
+
+    @media (max-width:800px){
+      .avatar { width:120px; height:120px } .skill{ width:160px } .project{ width:92% }
+      nav{ gap:10px; padding:8px }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="particles"></canvas>
+
+  <header class="topbar">
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#favorites">Favorites</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section id="home" class="hero">
+      <div class="avatar-wrap">
+        <img class="avatar" src="profile.jpg" alt="Lyndon Jay V. Aron">
+      </div>
+      <div class="name">Lyndon Jay V. Aron</div>
+      <div class="tagline">Born Sept 6, 2004 · 21 yrs old · 5'8" · Passion: Basketball 🏀 · Strengths: Adaptability & Teamwork</div>
+
+      <div class="cta-row">
+        <a href="#projects" class="btn">View Projects</a>
+        <a href="resume.pdf" class="btn" download>Download CV</a>
+      </div>
+    </section>
+
+    <section id="about" class="card">
+      <h2 class="sec-title">About Me</h2>
+      <p>Hi I’m Lyndon Jay V. Aron, a 21-year-old who’s all about growth, passion, and purpose. I love exploring new challenges—whether it’s leading a community project, creating something creative, or just improving myself day by day. Basketball has always been my escape and motivation; it teaches me teamwork, discipline, and focus. I’m the type of person who adapts quickly, learns fast, and always finds a way to make things work. I value genuine connections and people who aim high but stay humble. For me, life’s about learning, enjoying the process, and turning every experience—whether good or bad—into something that makes me stronger and better. This portfolio is editable — replace text and images below with your content.</p>
+      <p style="margin-top:8px; color:rgba(255,255,255,0.82)">Quick facts: Born Sept 6, 2004 · Age 21 · Height 5'8"</p>
+    </section>
+
+    <section id="skills" class="card">
+      <h2 class="sec-title">Skills</h2>
+      <div class="skills-grid" id="skillsGrid">
+        <div class="skill"><div class="label">Leadership</div><div class="bar"><div class="fill" data-percent="90%"></div></div></div>
+        <div class="skill"><div class="label">Teamwork</div><div class="bar"><div class="fill" data-percent="92%"></div></div></div>
+        <div class="skill"><div class="label">Adaptability</div><div class="bar"><div class="fill" data-percent="88%"></div></div></div>
+        <div class="skill"><div class="label">Basic CAD</div><div class="bar"><div class="fill" data-percent="75%"></div></div></div>
+        <div class="skill"><div class="label">Problem Solving</div><div class="bar"><div class="fill" data-percent="85%"></div></div></div>
+      </div>
+    </section>
+
+    <section id="projects" class="card">
+      <h2 class="sec-title">Projects</h2>
+      <div class="projects-grid">
+        <article class="project"><img src="project1.jpg"><h3>Designed a simple 3D model using AutoCAD or SketchUp (e.g., house layout, logo, or mechanical part)..</p></article>
+        <article class="project"><img src="project2.jpg"><h3>Worked with classmates on a research topic and presented findings.  .</p></article>
+        <article class="project"><img src="project3.jpg"><h3>Built a simple prototype (like a vellum board made with recycled paper designed specially to archi students)</p></article>
+      </div>
+    </section>
+
+    <section id="favorites" class="card">
+      <h2 class="sec-title">Favorites</h2>
+
+      <h4 style="margin-top:8px">Top 3 Song Artists</h4>
+      <div class="fav-grid">
+        <div class="fav"><img src="artist1.jpg" alt="" style="width:120px;height:120px;border-radius:8px;object-fit:cover"><div>Justin Bieber</div></div>
+        <div class="fav"><img src="artist2.jpg" alt="" style="width:120px;height:120px;border-radius:8px;object-fit:cover"><div>Lany</div></div>
+        <div class="fav"><img src="artist3.jpg" alt="" style="width:120px;height:120px;border-radius:8px;object-fit:cover"><div>Brent faiyaz</div></div>
+      </div>
+
+      <h4 style="margin-top:22px">Top 3 Animes</h4>
+      <div class="fav-grid">
+        <div class="fav"><img src="anime1.jpg" alt="" style="width:120px;height:120px;border-radius:8px;object-fit:cover"><div>Attack on Titan</div></div>
+        <div class="fav"><img src="anime2.jpg" alt="" style="width:120px;height:120px;border-radius:8px;object-fit:cover"><div>One Piece</div></div>
+        <div class="fav"><img src="anime3.jpg" alt="" style="width:120px;height:120px;border-radius:8px;object-fit:cover"><div>Hunter x Hunter</div></div>
+      </div>
+
+      <h4 style="margin-top:22px">Top 3 Movies</h4>
+      <div class="fav-grid">
+        <div class="fav"><img src="movie1.jpg" alt="" style="width:120px;height:120px;border-radius:8px;object-fit:cover"><div>Nightcrawler</div></div>
+        <div class="fav"><img src="movie2.jpg" alt="" style="width:120px;height:120px;border-radius:8px;object-fit:cover"><div>3 Idiots</div></div>
+        <div class="fav"><img src="movie3.jpg" alt="" style="width:120px;height:120px;border-radius:8px;object-fit:cover"><div>Project Almanac</div></div>
+      </div>
+    </section>
+
+    <!-- NEW CONTACT SECTION -->
+    <section id="contact" class="card">
+      <h2 class="sec-title">Contact</h2>
+      <div class="contact-row">
+        <p>Email: <a href="mailto:lyndonaron08@gmail.com">lyndonaron08@gmail.com</a></p>
+        <p>Instagram: <a href="https://instagram.com/7yndon_jayv" target="_blank">@7yndon_jayv</a></p>
+      </div>
+    </section>
+
+    <footer>© 2025 Lyndon Jay V. Aron — All Rights Reserved</footer>
+  </main>
+
+  <button id="backToTop" title="Back to top">↑</button>
+
+  <script>
+    const cards = document.querySelectorAll('section.card');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible') });
+    }, {threshold:0.18});
+    cards.forEach(c=>io.observe(c));
+
+    document.querySelector('.hero').classList.add('visible');
+
+    const skillObserver = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          const fills = e.target.querySelectorAll('.fill');
+          fills.forEach(f => { const p = f.dataset.percent || '70%'; f.style.width = p; });
+        }
+      });
+    }, { threshold: 0.35 });
+    document.querySelectorAll('#skills').forEach(n => skillObserver.observe(n));
+
+    const back = document.getElementById('backToTop');
+    addEventListener('scroll', ()=> back.style.display = (scrollY>360?'block':'none'));
+    back.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+  </script>
+<script>
+  // Existing intersection observer and skill observer code here
+  const cards = document.querySelectorAll('section.card');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible') });
+  }, {threshold:0.18});
+  cards.forEach(c=>io.observe(c));
+
+  document.querySelector('.hero').classList.add('visible');
+
+  const skillObserver = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const fills = e.target.querySelectorAll('.fill');
+        fills.forEach(f => { const p = f.dataset.percent || '70%'; f.style.width = p; });
+      }
+    });
+  }, { threshold: 0.35 });
+  document.querySelectorAll('#skills').forEach(n => skillObserver.observe(n));
+
+  // Back to Top button
+  const back = document.getElementById('backToTop');
+  addEventListener('scroll', ()=> back.style.display = (scrollY>360?'block':'none'));
+  back.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+
+  // Dark/Light mode toggle
+  const modeToggle = document.getElementById('modeToggle');
+  modeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    modeToggle.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+  });
+
+  // Smooth scrolling + navbar highlight
+  const navLinks = document.querySelectorAll('nav a');
+  const sections = document.querySelectorAll('main .wrap section, #home');
+
+  // Smooth scrolling
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Navbar highlight on scroll
+  const highlightNav = () => {
+    let scrollPos = window.scrollY + window.innerHeight / 3;
+    sections.forEach(sec => {
+      if (scrollPos >= sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        const activeLink = document.querySelector(`nav a[href="#${sec.id}"]`);
+        if(activeLink) activeLink.classList.add('active');
+      }
+    });
+  };
+  window.addEventListener('scroll', highlightNav);
+  highlightNav(); // initial call
+</script>
+
+<style>
+  /* Navbar active link style */
+  nav a.active {
+    color: #00f0ff;
+    text-shadow: 0 0 8px rgba(0,240,255,0.4);
+  }
+</style>
+
+
+<script>
+  // Existing intersection observer and skill observer code here
+  const cards = document.querySelectorAll('section.card');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible') });
+  }, {threshold:0.18});
+  cards.forEach(c=>io.observe(c));
+
+  document.querySelector('.hero').classList.add('visible');
+
+  const skillObserver = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const fills = e.target.querySelectorAll('.fill');
+        fills.forEach(f => { const p = f.dataset.percent || '70%'; f.style.width = p; });
+      }
+    });
+  }, { threshold: 0.35 });
+  document.querySelectorAll('#skills').forEach(n => skillObserver.observe(n));
+
+  // Back to Top button
+  const back = document.getElementById('backToTop');
+  addEventListener('scroll', ()=> back.style.display = (scrollY>360?'block':'none'));
+  back.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+
+  // Dark/Light mode toggle
+  const modeToggle = document.getElementById('modeToggle');
+  modeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    modeToggle.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+  });
+
+  // Smooth scrolling + navbar highlight
+  const navLinks = document.querySelectorAll('nav a');
+  const sections = document.querySelectorAll('main .wrap section, #home');
+
+  // Smooth scrolling
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Navbar highlight on scroll
+  const highlightNav = () => {
+    let scrollPos = window.scrollY + window.innerHeight / 3;
+    sections.forEach(sec => {
+      if (scrollPos >= sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        const activeLink = document.querySelector(`nav a[href="#${sec.id}"]`);
+        if(activeLink) activeLink.classList.add('active');
+      }
+    });
+  };
+  window.addEventListener('scroll', highlightNav);
+  highlightNav(); // initial call
+</script>
+
+<style>
+  /* Navbar active link style */
+  nav a.active {
+    color: #00f0ff;
+    text-shadow: 0 0 8px rgba(0,240,255,0.4);
+  }
+</style>
+
+
+</body>
+</html>
+
